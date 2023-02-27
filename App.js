@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import {StyleSheet, View, Text, StatusBar, ScrollView} from 'react-native';
+import {StyleSheet, View, Text, StatusBar} from 'react-native';
 import {useHeaderHeight} from '@react-navigation/elements';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -19,15 +19,6 @@ const Screen = () => {
     <View style={styles.screen}>
       <StatusBar />
       <Text>Content</Text>
-      <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
-        <View
-          style={{
-            height: 300 + Math.random() * 500,
-            width: 100,
-            backgroundColor: 'blue',
-          }}
-        />
-      </ScrollView>
     </View>
   );
 };
@@ -35,10 +26,6 @@ const Screen = () => {
 const defaultStackOptions = {
   headerStyle: {
     backgroundColor: 'red',
-  },
-  headerTitleStyle: {
-    color: 'white',
-    fontWeight: '800',
   },
   headerTitleAlign: 'center',
   animation: 'slide_from_right',
