@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import {StyleSheet, View, Text, StatusBar} from 'react-native';
-import {useHeaderHeight} from '@react-navigation/elements';
+import {StyleSheet, View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
@@ -13,11 +12,8 @@ const Stack = createNativeStackNavigator();
 const StartScreen = () => <View />;
 
 const Screen = () => {
-  const headerHeight = useHeaderHeight();
-  console.log(headerHeight);
   return (
     <View style={styles.screen}>
-      <StatusBar />
       <Text>Content</Text>
     </View>
   );
@@ -27,21 +23,13 @@ const defaultStackOptions = {
   headerStyle: {
     backgroundColor: 'red',
   },
-  headerTitleStyle: {
-    color: 'white',
-    fontWeight: '800',
-  },
-  headerTitleAlign: 'center',
-  animation: 'slide_from_right',
-  gestureEnabled: false,
-  orientation: 'portrait_up',
 };
 
 const defaultTabBarStyle = {
-  tabBarStyle: {height: 100, backgroundColor: 'red'},
+  tabBarStyle: {backgroundColor: 'red'},
 };
 
-const BottomStack = () => (
+const NestedStack = () => (
   <Stack.Navigator screenOptions={defaultStackOptions}>
     <Stack.Screen name="stack" options={{title: 'Header'}} component={Screen} />
   </Stack.Navigator>
@@ -49,7 +37,7 @@ const BottomStack = () => (
 
 const TopTab = () => (
   <Tab.Navigator screenOptions={defaultTabBarStyle} tabBarPosition="bottom">
-    <Tab.Screen name="tab" component={BottomStack} />
+    <Tab.Screen name="tab" component={NestedStack} />
   </Tab.Navigator>
 );
 
@@ -64,9 +52,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <RootStack.Navigator
-        initialRouteName=""
-        screenOptions={{headerShown: false}}>
+      <RootStack.Navigator screenOptions={{headerShown: false}}>
         {showStart ? (
           <RootStack.Screen name="start" component={StartScreen} />
         ) : (
