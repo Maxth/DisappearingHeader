@@ -27,6 +27,10 @@ const defaultStackOptions = {
   headerStyle: {
     backgroundColor: 'red',
   },
+  headerTitleStyle: {
+    color: 'white',
+    fontWeight: '800',
+  },
   headerTitleAlign: 'center',
   animation: 'slide_from_right',
   gestureEnabled: false,
