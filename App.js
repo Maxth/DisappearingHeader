@@ -4,6 +4,7 @@ import {StyleSheet, View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const RootStack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -13,9 +14,9 @@ const StartScreen = () => <View />;
 
 const Screen = () => {
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
       <Text>Content</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
